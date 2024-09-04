@@ -63,6 +63,7 @@ router.get('/all', async function (req, res, next) {
         }
       }
     ])
+    
     res.status(200).json({
       status: "Success",
       message: "Result Found Successfully!",
