@@ -5,8 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 const mongoose = require('mongoose');
-var cors = require('cors')
-app.use(cors())
+// var cors = require('cors')
+// app.use(cors())
 mongoose.connect('mongodb://127.0.0.1:27017/Student_Reslt')
   .then(() => console.log('Connected!'))
   .catch((err) => console.log(err.message))

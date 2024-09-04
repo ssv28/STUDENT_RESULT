@@ -38,25 +38,25 @@ router.get('/all', async function (req, res, next) {
         }
       },
       {
-        $unwind:"$Student"
+        $unwind: "$Student"
       },
       {
-        $addFields : {
-          total : {$sum : ['$maths','$english','$gujarati']},
+        $addFields: {
+          total: { $sum: ['$maths', '$english', '$gujarati'] },
           per: {
             $divide: [
               { $sum: ['$maths', '$english', '$gujarati'] },
               3
             ]
           }
-      
+
         }
       },
       {
-        $addFields : {
-          divide :  {
-            $round : [
-              {$divide : ['$total',3]},
+        $addFields: {
+          divide: {
+            $round: [
+              { $divide: ['$total', 3] },
               2
             ]
           }
