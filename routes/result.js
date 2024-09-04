@@ -31,19 +31,19 @@ router.get('/all', async function (req, res, next) {
     let resultData = await RESULT.aggregate([
       {
         $lookup: {
-          from: "students",
-          localField: "studentID",
+          from: "students",  //from mongoDB database compass
+          localField: "studentID", //populate id
           foreignField: "_id",
-          as: "Student"
+          as: "Student"    //feild name
         }
       },
       {
-        $unwind: "$Student"
+        $unwind: "$Student"           //Array -----> object convert
       },
       {
-        $addFields: {
-          total: { $sum: ['$maths', '$english', '$gujarati'] },
-          per: {
+        $addFields: {    //feilds add krava
+          total: { $sum: ['$maths', '$english', '$gujarati'] },  // total 
+          per: {   //per
             $divide: [
               { $sum: ['$maths', '$english', '$gujarati'] },
               3
